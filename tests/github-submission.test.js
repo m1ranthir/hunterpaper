@@ -21,8 +21,7 @@ test("mantém o formulário de paper estruturado para revisão manual", async ()
 
   assert.match(form, /paper:pending/);
   assert.match(form, /type: textarea\n    id: paper/);
-  assert.match(form, /type: textarea\n    id: images/);
-  assert.doesNotMatch(form, /type: upload/);
+  assert.match(form, /type: upload\n    id: images/);
   assert.match(form, /id: disclosure/);
   assert.doesNotMatch(form, /submissionEndpoint|GitHub App/);
 });

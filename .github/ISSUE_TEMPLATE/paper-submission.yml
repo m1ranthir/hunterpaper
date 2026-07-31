@@ -93,12 +93,11 @@ body:
     validations:
       required: true
 
-  - type: textarea
+  - type: upload
     id: images
     attributes:
       label: Images and evidence
-      description: Drag and drop redacted screenshots or diagrams here. GitHub will upload them and insert their Markdown links. Include alternative text whenever possible.
-      placeholder: Drag and drop redacted images here.
+      description: Add redacted screenshots or diagrams used by the paper. Include alternative text in the paper whenever possible.
     validations:
       required: false
 
