@@ -24,8 +24,8 @@ export const projectContributors = Object.freeze([
   {
     id: "m1ranthir",
     name: "m1ranthir",
-    githubId: null,
-    github: null,
+    githubId: 218008298,
+    github: "m1ranthir",
     roles: ["creator", "maintainer"],
   },
 ]);

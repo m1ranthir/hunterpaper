@@ -3,6 +3,7 @@ import test from "node:test";
 
 import {
   DEFAULT_LOCALE,
+  formatDate,
   getLocale,
   messages,
   plural,
@@ -32,6 +33,10 @@ test("aplica pluralização em EN-US e PT-BR", () => {
   assert.equal(plural("home.paperCount", 2, {}, "en-US"), "2 papers");
   assert.equal(plural("community.paperCount", 1, {}, "pt-BR"), "1 paper publicado");
   assert.equal(plural("community.paperCount", 2, {}, "pt-BR"), "2 papers publicados");
+});
+
+test("mantém datas editoriais no dia publicado independentemente do fuso", () => {
+  assert.equal(formatDate("2026-07-31", {}, "en-US"), "Jul 31, 2026");
 });
 
 test("mantém paridade de chaves entre EN-US e PT-BR", () => {

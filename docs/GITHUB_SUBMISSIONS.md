@@ -2,6 +2,8 @@
 
 O GitHub Issues é a caixa de entrada e o painel de moderação do Hunter Paper. Não existe API, backend ou publicação automática.
 
+Para transformar uma Issue aprovada em conteúdo do site, siga o [`Manual para publicar um paper`](PUBLICAR_PAPER.md).
+
 ## Fluxo
 
 1. O autor abre o formulário `Submit a paper` no GitHub.

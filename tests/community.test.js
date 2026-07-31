@@ -19,22 +19,26 @@ test("lista m1ranthir como criador do projeto", () => {
   assert.equal(creator.image, "./assets/m1ranthir_logo.png");
   assert.deepEqual(creator.socials, { github: "", linkedin: "" });
   assert.equal(projectContributors[0].name, "m1ranthir");
-  assert.equal(projectContributors[0].github, null);
+  assert.equal(projectContributors[0].githubId, 218008298);
+  assert.equal(projectContributors[0].github, "m1ranthir");
   assert.deepEqual(projectContributors[0].roles, ["creator", "maintainer"]);
 });
 
 test("combina autores publicados pelo GitHub ID sem duplicar", () => {
   const result = getContributors([
-    { authors: [{ githubId: 1, github: "m1ranthir-gh", name: "m1ranthir" }], title: "Paper A" },
+    { authors: [{ githubId: 218008298, github: "m1ranthir", name: "m1ranthir" }], title: "Paper A" },
     { authors: [{ githubId: 2, github: "researcher", name: "Researcher" }], title: "Paper B" },
     { authors: [{ githubId: 2, github: "researcher", name: "Researcher" }], title: "Paper C" },
   ]);
 
-  assert.equal(result.length, 3);
+  assert.equal(result.length, 2);
   const creator = result.find((item) => item.id === "m1ranthir");
   const researcher = result.find((item) => item.github === "researcher");
-  assert.deepEqual(creator.roles.sort(), ["creator", "maintainer"].sort());
-  assert.equal(creator.paperCount, 0);
+  assert.deepEqual(
+    creator.roles.sort(),
+    ["creator", "maintainer", "researcher", "paperAuthor"].sort(),
+  );
+  assert.equal(creator.paperCount, 1);
   assert.equal(researcher.paperCount, 2);
 });
 
