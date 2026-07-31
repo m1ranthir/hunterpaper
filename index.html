@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Hunter Paper — free bug bounty papers for the community."
+    />
+    <meta name="author" content="m1ranthir" />
+    <meta name="theme-color" content="#0a0b0c" />
+    <meta name="color-scheme" content="dark" />
+    <meta property="og:title" content="Hunter Paper" />
+    <meta property="og:locale" content="en_US" />
+    <meta
+      property="og:description"
+      content="Free bug bounty papers for beginners and security researchers."
+    />
+    <title>Hunter Paper — free bug bounty papers</title>
+    <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content" data-i18n="common.skipToContent">Skip to content</a>
+
+    <header class="site-header">
+      <nav class="nav shell" aria-label="Main navigation" data-i18n-aria-label="nav.mainLabel">
+        <a class="nav-mark" href="#home" aria-label="Hunter Paper — home" data-i18n-aria-label="nav.homeLabel">
+          <span aria-hidden="true">hp<span class="accent">/</span></span>
+        </a>
+
+        <div class="nav-actions">
+          <a class="nav-community" href="#community" data-i18n="nav.community">Community</a>
+          <label class="language-control">
+            <span class="sr-only" data-i18n="language.label">Language</span>
+            <select id="language-switcher" aria-label="Language" data-i18n-aria-label="language.label">
+              <option value="en-US">EN-US</option>
+              <option value="pt-BR">PT-BR</option>
+            </select>
+          </label>
+          <a class="button button-small button-primary" href="#submit">
+            <span class="button-plus" aria-hidden="true">+</span>
+            <span data-i18n="nav.submit">Submit paper</span>
+          </a>
+        </div>
+      </nav>
+    </header>
+
+    <section class="masthead shell" aria-label="Hunter Paper">
+      <a class="ascii-logo" href="#home" aria-label="Hunter Paper — home" data-i18n-aria-label="nav.homeLabel">
+        <img
+          class="official-logo"
+          src="./assets/hp_logo.png"
+          alt=""
+          width="1121"
+          height="1403"
+          decoding="async"
+        />
+        <pre class="ascii-logo-full" aria-hidden="true"> ▄  █   ▄      ▄     ▄▄▄▄▀ ▄███▄   █▄▄▄▄     █ ▄▄  ██   █ ▄▄  ▄███▄   █▄▄▄▄
+█   █    █      █ ▀▀▀ █    █▀   ▀  █  ▄▀     █   █ █ █  █   █ █▀   ▀  █  ▄▀
+██▀▀█ █   █ ██   █    █    ██▄▄    █▀▀▌      █▀▀▀  █▄▄█ █▀▀▀  ██▄▄    █▀▀▌
+█   █ █   █ █ █  █   █     █▄   ▄▀ █  █      █     █  █ █     █▄   ▄▀ █  █
+   █  █▄ ▄█ █  █ █  ▀      ▀███▀     █        █       █  █    ▀███▀     █
+  ▀    ▀▀▀  █   ██                  ▀          ▀     █    ▀            ▀
+                                                    ▀</pre>
+        <pre class="ascii-logo-compact" aria-hidden="true">┌─ HUNTER ─┐
+└─ PAPER_ ─┘</pre>
+      </a>
+    </section>
+
+    <main id="main-content" tabindex="-1">
+      <div id="app" class="shell" aria-live="polite"></div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="shell footer-inner">
+        <p><span class="footer-mark">hp/</span> <span data-i18n="footer.message">Share knowledge with the community for free</span></p>
+        <div>
+          <span><span data-i18n="footer.createdBy">Created by</span> <strong>m1ranthir</strong></span>
+          <a href="#community" data-i18n="nav.community">Community</a>
+          <a href="#about" data-i18n="nav.about">About</a>
+          <a href="#guidelines" data-i18n="nav.guidelines">Guidelines</a>
+        </div>
+      </div>
+    </footer>
+
+    <div id="toast-region" class="toast-region" aria-live="polite" aria-atomic="true"></div>
+
+    <script type="module" src="./src/app.js"></script>
+  </body>
+</html>

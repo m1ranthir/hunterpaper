@@ -1,0 +1,110 @@
+name: Submit a paper
+description: Send a bug bounty paper for manual review by Hunter Paper.
+title: "[Paper]: "
+labels:
+  - "paper:pending"
+assignees:
+  - "m1ranthir"
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Papers are reviewed manually before they appear on Hunter Paper.
+
+        This issue will be public. Submit only material that is cleared for disclosure. Remove credentials, tokens, personal data, client names and active vulnerabilities.
+
+  - type: input
+    id: paper_title
+    attributes:
+      label: Paper title
+      placeholder: Example: Finding and validating a race condition in an API
+    validations:
+      required: true
+
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: Explain what readers will learn without including sensitive data.
+      placeholder: Describe the discovery, context and main lesson in a few lines.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: language
+    attributes:
+      label: Paper language
+      options:
+        - English
+        - Português (Brasil)
+        - Other
+    validations:
+      required: true
+
+  - type: dropdown
+    id: difficulty
+    attributes:
+      label: Difficulty
+      options:
+        - Beginner
+        - Intermediate
+        - Advanced
+    validations:
+      required: true
+
+  - type: input
+    id: tags
+    attributes:
+      label: Tags
+      description: Add between one and five comma-separated tags.
+      placeholder: web, race-condition, api
+    validations:
+      required: true
+
+  - type: textarea
+    id: paper
+    attributes:
+      label: Paper in Markdown
+      description: Write the complete paper using Markdown. Code blocks are allowed; arbitrary HTML is not.
+      placeholder: |
+        ## Summary
+
+        What happened and why does it matter?
+
+        ## Context and scope
+
+        Describe the authorized environment and remove sensitive data.
+
+        ## Methodology
+
+        Explain how you reached and validated the result.
+
+        ## Impact
+
+        Describe the demonstrated impact safely.
+
+        ## Mitigation
+
+        Explain how the issue can be fixed.
+
+        ## References
+
+        - Add relevant references and credits.
+    validations:
+      required: true
+
+  - type: upload
+    id: images
+    attributes:
+      label: Images and evidence
+      description: Add redacted screenshots or diagrams used by the paper. Include alternative text in the paper whenever possible.
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: disclosure
+    attributes:
+      label: Responsible disclosure
+      options:
+        - label: I confirm that I am authorized to share this material and that it contains no secrets, personal data or active vulnerabilities that are not cleared for disclosure.
+          required: true
