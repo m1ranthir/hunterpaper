@@ -68,31 +68,55 @@ Aprovar a Issue não publica o paper automaticamente. A etapa seguinte é obriga
 
 ## 3. Adicione o paper ao site
 
-Abra [`src/data.js`](../src/data.js) e adicione um objeto no array `papers`.
+### Onde inserir o paper no código
 
-Use este modelo:
+Abra [`src/data.js`](../src/data.js). No começo do arquivo existe o array `papers`:
 
 ```js
-Object.freeze({
-  slug: "titulo-do-paper",
-  title: "Título do paper",
-  excerpt: "Resumo curto exibido na página inicial.",
-  category: "web",
-  tags: ["web", "xss", "bug-bounty"],
-  publishedAt: "2026-07-31",
-  readMinutes: 8,
-  difficulty: "beginner",
-  author: "usuario-github",
-  authorName: "Nome exibido",
-  authorGithub: "usuario-github",
-  authorGithubId: 123456,
-  initials: "UG",
-  sourceUrl: "https://github.com/m1ranthir/hunterpaper/issues/NUMERO",
-  body: `## Summary
-
-Cole aqui o paper completo em Markdown.`,
-}),
+export const papers = [
+  // Os papers publicados ficam aqui.
+];
 ```
+
+Cada publicação é um `Object.freeze({ ... })`. Cole o novo objeto **depois de `[` e antes de `];`**. Para manter os papers recentes primeiro, coloque a nova publicação acima das anteriores.
+
+O resultado deve seguir esta estrutura:
+
+```js
+export const papers = [
+  Object.freeze({
+    slug: "titulo-do-paper",
+    title: "Título do paper",
+    excerpt: "Resumo curto exibido na página inicial.",
+    category: "web",
+    tags: ["web", "xss", "bug-bounty"],
+    publishedAt: "2026-07-31",
+    readMinutes: 8,
+    difficulty: "beginner",
+    author: "usuario-github",
+    authorName: "Nome exibido",
+    authorGithub: "usuario-github",
+    authorGithubId: 123456,
+    initials: "UG",
+    sourceUrl: "https://github.com/m1ranthir/hunterpaper/issues/NUMERO",
+    body: `## Resumo
+
+Cole aqui todo o paper em Markdown.
+
+## Evidência
+
+![Descrição da imagem](https://github.com/user-attachments/assets/IDENTIFICADOR)
+
+## Mitigação
+
+Explique como o problema pode ser corrigido.`,
+  }),
+
+  // Os papers publicados anteriormente permanecem abaixo.
+];
+```
+
+Não crie outro `export const papers`. Adicione somente o novo `Object.freeze({ ... })` ao array que já existe.
 
 ### Campos obrigatórios
 
