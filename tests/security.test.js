@@ -28,5 +28,7 @@ test("aplica CSP estrita e remove estilos inline do HTML dinâmico", async () =>
   assert.match(index, /base-uri 'none'/);
   assert.match(index, /form-action 'none'/);
   assert.doesNotMatch(index, /unsafe-inline|unsafe-eval/);
+  assert.doesNotMatch(index, />hp\//);
+  assert.match(index, /use brain/);
   assert.doesNotMatch(app, /style="/);
 });
