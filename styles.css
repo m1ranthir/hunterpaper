@@ -180,15 +180,23 @@ button {
 }
 
 .nav-mark {
+  display: inline-flex;
+  align-items: center;
   width: max-content;
+  gap: 8px;
   color: var(--text);
-  font: 700 1rem/1 var(--mono);
-  letter-spacing: -0.04em;
+  font: 650 0.68rem/1 var(--mono);
+  letter-spacing: 0.02em;
 }
 
-.accent,
 .nav-mark:hover {
   color: var(--orange);
+}
+
+.nav-brand-logo {
+  width: 22px;
+  height: 28px;
+  object-fit: cover;
 }
 
 .nav-links {
@@ -653,6 +661,10 @@ button {
   align-items: center;
   flex-wrap: wrap;
   gap: 6px;
+}
+
+.paper-tags {
+  margin-top: 18px;
 }
 
 .tag {
@@ -1156,6 +1168,10 @@ a.tag:hover {
   margin-inline: auto;
 }
 
+.not-found-home {
+  margin-top: 24px;
+}
+
 .success-panel {
   position: relative;
   overflow: hidden;
@@ -1297,6 +1313,10 @@ a.tag:hover {
 
 .prose-section li::marker {
   color: var(--orange);
+}
+
+.guidelines-submit {
+  margin-top: 28px;
 }
 
 .manifesto-quote {
@@ -1680,10 +1700,28 @@ a.tag:hover {
   margin: 0;
 }
 
-.footer-mark {
-  margin-right: 8px;
-  color: var(--orange);
-  font-weight: 700;
+.footer-message,
+.footer-identity {
+  display: inline-flex;
+  align-items: center;
+}
+
+.footer-message {
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.footer-identity {
+  flex: 0 0 auto;
+  gap: 7px;
+  color: var(--text-soft);
+  font-weight: 650;
+}
+
+.footer-brand-logo {
+  width: 18px;
+  height: 23px;
+  object-fit: cover;
 }
 
 .footer-inner div {

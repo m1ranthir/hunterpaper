@@ -85,6 +85,7 @@ O resultado deve seguir esta estrutura:
 ```js
 export const papers = [
   Object.freeze({
+    id: "hp-a1b2c3d4",
     slug: "titulo-do-paper",
     title: "Título do paper",
     excerpt: "Resumo curto exibido na página inicial.",
@@ -122,7 +123,8 @@ Não crie outro `export const papers`. Adicione somente o novo `Object.freeze({ 
 
 | Campo | Como preencher |
 | --- | --- |
-| `slug` | Endereço curto, minúsculo, sem espaços ou acentos |
+| `id` | Identificador público no formato `hp-` seguido por 8 letras minúsculas ou números |
+| `slug` | Nome interno curto, minúsculo, sem espaços ou acentos; não aparece na URL canônica |
 | `title` | Título completo do paper |
 | `excerpt` | Uma ou duas frases para o feed |
 | `category` | Tema principal, por exemplo `web`, `api` ou `recon` |
@@ -136,6 +138,25 @@ Não crie outro `export const papers`. Adicione somente o novo `Object.freeze({ 
 | `initials` | Uma ou duas letras usadas no avatar textual |
 | `sourceUrl` | URL da Issue original |
 | `body` | Paper completo em Markdown |
+
+### Gere o ID usado na URL
+
+O link público usa o campo `id`, por exemplo:
+
+```text
+http://127.0.0.1:4173/#paper/hp-a1b2c3d4
+```
+
+Gere os oito caracteres aleatórios pelo terminal:
+
+```bash
+printf 'hp-'
+openssl rand -hex 4
+```
+
+Junte o prefixo e o resultado no campo `id`. Verifique se o valor ainda não foi usado por outro paper.
+
+Não use o título codificado em Base64 como identificador. Base64 é reversível e não protege informações; o ID serve somente como endereço público estável, nunca como autorização de acesso.
 
 Para descobrir o ID numérico de um usuário:
 

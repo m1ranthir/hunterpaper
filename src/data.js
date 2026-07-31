@@ -1,6 +1,7 @@
 // Papers entram aqui somente depois da revisão e aprovação manual.
 export const papers = [
   Object.freeze({
+    id: "hp-a7f3d9c2",
     slug: "welcome-to-hunter-paper",
     title: "Welcome to Hunter Paper",
     excerpt:

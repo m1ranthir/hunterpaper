@@ -70,10 +70,23 @@ node --check src/app.js
 node --test
 ```
 
+## Hospedagem
+
+O site é publicado pelo GitHub Pages após cada merge na branch `main`. Antes do deploy, o GitHub Actions verifica a sintaxe do JavaScript e executa os testes do projeto.
+
+Endereço padrão após a ativação:
+
+```text
+https://m1ranthir.github.io/hunterpaper/
+```
+
+O workflow já funciona com caminhos relativos e está preparado para um domínio próprio futuro. O passo a passo para ativar o Pages e configurar DNS, HTTPS e verificação de domínio está em [`docs/GITHUB_PAGES.md`](docs/GITHUB_PAGES.md).
+
 ## O que já funciona
 
 - página inicial preparada para receber papers aprovados;
 - páginas de leitura renderizadas a partir de Markdown sanitizado;
+- URLs canônicas de papers baseadas em IDs públicos estáveis;
 - índice de seções e cópia do link do paper;
 - formulário estruturado de submissão no GitHub Issues;
 - escrita integral em Markdown e envio de imagens pelo GitHub;
@@ -117,13 +130,16 @@ As submissões são públicas no GitHub. O autor deve enviar somente material au
 .
 ├── assets/                  # logo do projeto, favicon e imagem do criador
 ├── docs/                    # decisões de arquitetura e moderação
+├── .github/workflows/        # validação e deploy no GitHub Pages
 ├── src/
 │   ├── app.js               # rotas, telas e interações
 │   ├── community.js         # apoiadores e contribuidores
 │   ├── config.js            # repositório e formulário de submissão
 │   ├── data.js              # papers aprovados
 │   ├── i18n.js              # textos e formatação EN-US/PT-BR
-│   └── markdown.js          # renderer seguro e índice de headings
+│   ├── markdown.js          # renderer seguro e índice de headings
+│   ├── routing.js           # IDs e resolução das rotas de papers
+│   └── security.js          # validação central de URLs e imagens
 ├── tests/                   # testes de Markdown, comunidade, idiomas e submissão
 ├── index.html
 └── styles.css
@@ -138,3 +154,5 @@ As submissões são públicas no GitHub. O autor deve enviar somente material au
 ## Segurança
 
 Não envie tokens, dados pessoais, nomes de clientes ou vulnerabilidades ainda ativas pelas Issues públicas. Consulte [`SECURITY.md`](SECURITY.md).
+
+As regras de encoding, URLs, CSP, CSRF futuro e headers de produção estão documentadas em [`docs/SECURE_DEVELOPMENT.md`](docs/SECURE_DEVELOPMENT.md).

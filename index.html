@@ -2,6 +2,11 @@
 <html lang="en-US">
   <head>
     <meta charset="UTF-8" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; base-uri 'none'; object-src 'none'; frame-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' https://github.com https://*.githubusercontent.com https://github-production-user-asset-6210df.s3.amazonaws.com; connect-src 'none'; font-src 'self'; media-src 'none'; form-action 'none'"
+    />
+    <meta name="referrer" content="no-referrer" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
@@ -26,7 +31,15 @@
     <header class="site-header">
       <nav class="nav shell" aria-label="Main navigation" data-i18n-aria-label="nav.mainLabel">
         <a class="nav-mark" href="#home" aria-label="Hunter Paper — home" data-i18n-aria-label="nav.homeLabel">
-          <span aria-hidden="true">hp<span class="accent">/</span></span>
+          <img
+            class="nav-brand-logo"
+            src="./assets/hp_logo.png"
+            alt=""
+            width="1121"
+            height="1403"
+            decoding="async"
+          />
+          <span aria-hidden="true">use brain</span>
         </a>
 
         <div class="nav-actions">
@@ -74,7 +87,21 @@
 
     <footer class="site-footer">
       <div class="shell footer-inner">
-        <p><span class="footer-mark">hp/</span> <span data-i18n="footer.message">Share knowledge with the community for free</span></p>
+        <p class="footer-message">
+          <span class="footer-identity" aria-hidden="true">
+            <img
+              class="footer-brand-logo"
+              src="./assets/hp_logo.png"
+              alt=""
+              width="1121"
+              height="1403"
+              loading="lazy"
+              decoding="async"
+            />
+            <span>use brain</span>
+          </span>
+          <span data-i18n="footer.message">Share knowledge with the community for free</span>
+        </p>
         <div>
           <span><span data-i18n="footer.createdBy">Created by</span> <strong>m1ranthir</strong></span>
           <a href="#community" data-i18n="nav.community">Community</a>

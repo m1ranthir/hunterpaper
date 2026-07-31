@@ -11,10 +11,31 @@ test("escapa HTML arbitrário", () => {
 
 test("bloqueia protocolos perigosos em links e imagens", () => {
   const output = renderMarkdown(
-    "[clique](javascript:alert(1))\n\n![imagem](data:image/svg+xml;base64,PHN2Zy8+)",
+    "[javascript](javascript:alert(1))\n\n[http](http://example.com)\n\n![data](data:image/svg+xml;base64,PHN2Zy8+)\n\n![blob](blob:https://example.com/id)",
   );
   assert.equal(output.includes('href="javascript:'), false);
+  assert.equal(output.includes('href="http:'), false);
   assert.equal(output.includes('src="data:'), false);
+  assert.equal(output.includes('src="blob:'), false);
+});
+
+test("permite somente imagens locais ou hospedadas nos anexos do GitHub", () => {
+  const output = renderMarkdown(
+    "![permitida](https://github.com/user-attachments/assets/12345678)\n\n![tracking](https://tracker.example/pixel.png)\n\n![protocol-relative](//tracker.example/pixel.png)",
+  );
+
+  assert.match(output, /<img src="https:\/\/github\.com\/user-attachments\/assets\/12345678"/);
+  assert.equal(output.includes('src="https://tracker.example'), false);
+  assert.equal(output.includes('src="//tracker.example'), false);
+});
+
+test("escapa atributos de links e imagens", () => {
+  const output = renderMarkdown(
+    '![\" onerror=\"alert(1)](./assets/safe.png)',
+  );
+
+  assert.doesNotMatch(output, /alt=""\s+onerror=/);
+  assert.match(output, /&quot;/);
 });
 
 test("renderiza a estrutura principal de um paper", () => {

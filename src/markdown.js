@@ -1,3 +1,5 @@
+import { sanitizeContentUrl } from "./security.js";
+
 const HTML_ENTITIES = {
   "&": "&amp;",
   "<": "&lt;",
@@ -18,29 +20,6 @@ export function slugify(value = "") {
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-+|-+$/g, "")
     .slice(0, 72);
-}
-
-function sanitizeUrl(rawUrl, { image = false } = {}) {
-  const url = String(rawUrl ?? "")
-    .trim()
-    .replace(/[\u0000-\u001F\u007F\s]+/g, "");
-
-  if (!url) return "";
-
-  const lower = url.toLowerCase();
-  const relative =
-    url.startsWith("/") ||
-    url.startsWith("./") ||
-    url.startsWith("../") ||
-    url.startsWith("#") ||
-    /^[a-z0-9][a-z0-9._/-]*$/i.test(url);
-
-  if (relative) return url;
-  if (lower.startsWith("https://") || lower.startsWith("http://")) return url;
-  if (!image && lower.startsWith("mailto:")) return url;
-  if (image && lower.startsWith("blob:")) return url;
-
-  return "";
 }
 
 function createTokenStore() {
@@ -70,7 +49,7 @@ function renderInline(value, options = {}) {
     /!\[([^\]]*)\]\(([^)\s]+)(?:\s+["']([^"']*)["'])?\)/g,
     (original, alt, rawUrl, title) => {
       const resolved = options.resolveImageUrl?.(rawUrl) || rawUrl;
-      const safeUrl = sanitizeUrl(resolved, { image: true });
+      const safeUrl = sanitizeContentUrl(resolved, { image: true });
 
       if (!safeUrl) return escapeHtml(original);
 
@@ -84,7 +63,7 @@ function renderInline(value, options = {}) {
   output = output.replace(
     /\[([^\]]+)\]\(([^)\s]+)(?:\s+["']([^"']*)["'])?\)/g,
     (original, label, rawUrl, title) => {
-      const safeUrl = sanitizeUrl(rawUrl);
+      const safeUrl = sanitizeContentUrl(rawUrl);
       if (!safeUrl) return escapeHtml(original);
 
       const external = /^https?:\/\//i.test(safeUrl);
