@@ -1,8 +1,56 @@
-# Hunter Paper
+<p align="center">
+  <img src="./assets/hp_logo.png" alt="Logo do Hunter Paper" width="220">
+</p>
 
-Um projeto open source e sem fins lucrativos criado por **m1ranthir** para compartilhar papers gratuitos de bug bounty com a comunidade.
+<h1 align="center">Hunter Paper</h1>
 
-Esta é a primeira versão navegável do projeto. Ela entrega a direção visual, o feed, a leitura e a submissão manual de papers pelo GitHub Issues. O fluxo está documentado em [`docs/GITHUB_SUBMISSIONS.md`](docs/GITHUB_SUBMISSIONS.md).
+<p align="center">
+  Fórum gratuito e sem fins lucrativos para publicação de papers sobre bug bounty e pesquisa em segurança.
+</p>
+
+## O que é o Hunter Paper
+
+O Hunter Paper é um projeto criado por [**m1ranthir**](https://github.com/m1ranthir) para reunir pesquisas técnicas, descobertas e experiências reais da comunidade de bug bounty. O conteúdo é publicado gratuitamente e pode ser lido por qualquer pessoa.
+
+Os papers são enviados pelo GitHub em Markdown, analisados manualmente e publicados somente depois da aprovação do mantenedor. Não existe API, backend, banco de dados ou aprovação automática.
+
+## Objetivo
+
+- preservar conhecimento prático produzido por pesquisadores;
+- ajudar iniciantes a entender metodologias, raciocínio e impacto técnico;
+- oferecer um espaço gratuito para pesquisadores documentarem suas descobertas;
+- incentivar papers responsáveis, sem credenciais, dados pessoais ou vulnerabilidades ainda ativas;
+- dar crédito aos autores, contribuidores e apoiadores do projeto.
+
+## Para quem é
+
+- pessoas iniciando em bug bounty;
+- bug bounty hunters e pesquisadores independentes;
+- profissionais e estudantes de segurança de aplicações;
+- equipes de AppSec interessadas em compartilhar aprendizado autorizado;
+- pessoas que desejam aprender ou ensinar por meio de experiências documentadas.
+
+## Papers publicados
+
+Ainda não existem papers publicados. Esta lista permanecerá vazia até que o primeiro paper enviado pela comunidade seja revisado e aprovado.
+
+[Submeter o primeiro paper](https://github.com/m1ranthir/hunterpaper/issues/new?template=paper-submission.yml)
+
+## Contribuidores
+
+- [**m1ranthir**](https://github.com/m1ranthir) — criador e mantenedor.
+
+Novos contribuidores de código serão exibidos na área de comunidade do site e no [histórico de contribuidores do GitHub](https://github.com/m1ranthir/hunterpaper/graphs/contributors). Autores de papers recebem crédito no próprio paper e na lista de pesquisadores do projeto.
+
+## Como funciona
+
+1. O pesquisador abre o formulário `Submit a paper`.
+2. Escreve o paper integralmente em Markdown e anexa imagens redigidas quando necessário.
+3. A submissão vira uma Issue pública com o perfil GitHub do autor.
+4. **m1ranthir** analisa manualmente o perfil, o conteúdo e as evidências.
+5. O paper pode receber uma solicitação de alterações, ser recusado ou ser aprovado para publicação.
+
+O fluxo completo está documentado em [`docs/GITHUB_SUBMISSIONS.md`](docs/GITHUB_SUBMISSIONS.md).
 
 ## Rodar localmente
 
@@ -66,7 +114,7 @@ As submissões são públicas no GitHub. O autor deve enviar somente material au
 
 ```text
 .
-├── assets/                  # favicon e imagem do criador
+├── assets/                  # logo do projeto, favicon e imagem do criador
 ├── docs/                    # decisões de arquitetura e moderação
 ├── src/
 │   ├── app.js               # rotas, telas e interações
@@ -82,10 +130,9 @@ As submissões são públicas no GitHub. O autor deve enviar somente material au
 
 ## Próximas etapas
 
-1. criar as labels de moderação descritas em `docs/GITHUB_SUBMISSIONS.md`;
-2. carregar papers aprovados a partir de arquivos Markdown com frontmatter;
-3. gerar RSS, sitemap e busca estática no deploy;
-4. definir formalmente as licenças do código e dos papers.
+1. carregar papers aprovados a partir de arquivos Markdown com frontmatter;
+2. gerar RSS, sitemap e busca estática no deploy;
+3. definir formalmente as licenças do código e dos papers.
 
 ## Segurança
 
