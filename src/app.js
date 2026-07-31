@@ -1,6 +1,8 @@
 import { config } from "./config.js";
 import { creator, getContributors, githubUrl, supporters } from "./community.js";
 import { papers, topicOrder } from "./data.js";
+import { canonicalPaperHash, resolvePaper } from "./routing.js";
+import { externalUrl } from "./security.js";
 import {
   formatDate,
   getLocale,
@@ -85,6 +87,7 @@ function normalizeDifficulty(value) {
 }
 
 function paperRow(paper, index) {
+  const paperHref = canonicalPaperHash(paper);
   const tags = paper.tags
     .slice(0, 3)
     .map(
@@ -100,11 +103,11 @@ function paperRow(paper, index) {
         <div class="paper-meta">
           <span class="category">${escapeHtml(paper.category)}</span>
           <span class="separator" aria-hidden="true"></span>
-          <time datetime="${paper.publishedAt}">${escapeHtml(paper.publishedAt ? formatDate(paper.publishedAt) : paper.publishedLabel || "")}</time>
+          <time datetime="${escapeHtml(paper.publishedAt)}">${escapeHtml(paper.publishedAt ? formatDate(paper.publishedAt) : paper.publishedLabel || "")}</time>
           <span class="separator" aria-hidden="true"></span>
           <span>${escapeHtml(t("home.readingTime", { time: paper.readTime || `${paper.readMinutes || 0} min` }))}</span>
         </div>
-        <h2 class="paper-title"><a href="#paper/${paper.slug}">${escapeHtml(paper.title)}</a></h2>
+        <h2 class="paper-title"><a href="${escapeHtml(paperHref)}">${escapeHtml(paper.title)}</a></h2>
         <p class="paper-excerpt">${escapeHtml(paper.excerpt)}</p>
         <div class="paper-byline">
           <span class="author">${escapeHtml(paper.author)}</span>
@@ -248,11 +251,16 @@ function renderHome() {
   setDocumentTitle("");
 }
 
-function renderPaper(slug) {
-  const paper = papers.find((item) => item.slug === slug);
-  if (!paper) {
+function renderPaper(identifier) {
+  const resolved = resolvePaper(papers, identifier);
+  if (!resolved) {
     renderNotFound();
     return;
+  }
+
+  const { paper, canonicalHash } = resolved;
+  if (location.hash !== canonicalHash) {
+    history.replaceState(null, "", canonicalHash);
   }
 
   const headings = extractHeadings(paper.body);
@@ -281,10 +289,10 @@ function renderPaper(slug) {
           <span class="author-avatar" aria-hidden="true">${escapeHtml(paper.initials)}</span>
           <div>
             <strong>${escapeHtml(paper.author)}</strong>
-            <span>${t("paper.publishedOn")} <time datetime="${paper.publishedAt}">${escapeHtml(paper.publishedAt ? formatDate(paper.publishedAt) : paper.publishedLabel || "")}</time></span>
+            <span>${t("paper.publishedOn")} <time datetime="${escapeHtml(paper.publishedAt)}">${escapeHtml(paper.publishedAt ? formatDate(paper.publishedAt) : paper.publishedLabel || "")}</time></span>
           </div>
         </div>
-        <div class="tag-list" style="margin-top: 18px">${tags}</div>
+        <div class="tag-list paper-tags">${tags}</div>
       </header>
 
       <div class="paper-layout">
@@ -406,18 +414,9 @@ function renderGuidelines() {
           <li>${t("guidelines.reviewThree")}</li>
         </ol>
       </section>
-      <a class="button button-primary" href="#submit" style="margin-top: 28px">${t("about.submit")}</a>
+      <a class="button button-primary guidelines-submit" href="#submit">${t("about.submit")}</a>
     </div>`;
   setDocumentTitle(t("title.guidelines"));
-}
-
-function externalUrl(value) {
-  try {
-    const url = new URL(String(value || ""));
-    return ["https:", "http:"].includes(url.protocol) ? url.href : "";
-  } catch {
-    return "";
-  }
 }
 
 function renderSocialButton(network, value) {
@@ -547,7 +546,7 @@ function renderNotFound() {
   app.innerHTML = `
     <h1 class="page-title">${t("notFound.title")}</h1>
     <p class="page-description">${t("notFound.description")}</p>
-    <a class="button button-primary" href="#home" style="margin-top: 24px">${t("notFound.back")}</a>`;
+    <a class="button button-primary not-found-home" href="#home">${t("notFound.back")}</a>`;
   setDocumentTitle(t("title.notFound"));
 }
 

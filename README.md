@@ -74,6 +74,7 @@ node --test
 
 - página inicial preparada para receber papers aprovados;
 - páginas de leitura renderizadas a partir de Markdown sanitizado;
+- URLs canônicas de papers baseadas em IDs públicos estáveis;
 - índice de seções e cópia do link do paper;
 - formulário estruturado de submissão no GitHub Issues;
 - escrita integral em Markdown e envio de imagens pelo GitHub;
@@ -123,7 +124,9 @@ As submissões são públicas no GitHub. O autor deve enviar somente material au
 │   ├── config.js            # repositório e formulário de submissão
 │   ├── data.js              # papers aprovados
 │   ├── i18n.js              # textos e formatação EN-US/PT-BR
-│   └── markdown.js          # renderer seguro e índice de headings
+│   ├── markdown.js          # renderer seguro e índice de headings
+│   ├── routing.js           # IDs e resolução das rotas de papers
+│   └── security.js          # validação central de URLs e imagens
 ├── tests/                   # testes de Markdown, comunidade, idiomas e submissão
 ├── index.html
 └── styles.css
@@ -138,3 +141,5 @@ As submissões são públicas no GitHub. O autor deve enviar somente material au
 ## Segurança
 
 Não envie tokens, dados pessoais, nomes de clientes ou vulnerabilidades ainda ativas pelas Issues públicas. Consulte [`SECURITY.md`](SECURITY.md).
+
+As regras de encoding, URLs, CSP, CSRF futuro e headers de produção estão documentadas em [`docs/SECURE_DEVELOPMENT.md`](docs/SECURE_DEVELOPMENT.md).

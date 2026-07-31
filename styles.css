@@ -655,6 +655,10 @@ button {
   gap: 6px;
 }
 
+.paper-tags {
+  margin-top: 18px;
+}
+
 .tag {
   display: inline-flex;
   align-items: center;
@@ -1156,6 +1160,10 @@ a.tag:hover {
   margin-inline: auto;
 }
 
+.not-found-home {
+  margin-top: 24px;
+}
+
 .success-panel {
   position: relative;
   overflow: hidden;
@@ -1297,6 +1305,10 @@ a.tag:hover {
 
 .prose-section li::marker {
   color: var(--orange);
+}
+
+.guidelines-submit {
+  margin-top: 28px;
 }
 
 .manifesto-quote {
