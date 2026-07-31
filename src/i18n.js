@@ -285,12 +285,14 @@ export function plural(key, count, params = {}, locale = getLocale()) {
 }
 
 export function formatDate(value, options = {}, locale = getLocale()) {
-  const date = value instanceof Date ? value : new Date(value);
+  const isDateOnly = typeof value === "string" && /^\d{4}-\d{2}-\d{2}$/.test(value);
+  const date = value instanceof Date ? value : new Date(isDateOnly ? `${value}T00:00:00Z` : value);
   if (Number.isNaN(date.getTime())) return String(value || "");
   return new Intl.DateTimeFormat(normalizeLocale(locale), {
     year: "numeric",
     month: "short",
     day: "numeric",
+    ...(isDateOnly ? { timeZone: "UTC" } : {}),
     ...options,
   }).format(date);
 }

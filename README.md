@@ -32,9 +32,9 @@ Os papers são enviados pelo GitHub em Markdown, analisados manualmente e public
 
 ## Papers publicados
 
-Ainda não existem papers publicados. Esta lista permanecerá vazia até que o primeiro paper enviado pela comunidade seja revisado e aprovado.
+- [**Welcome to Hunter Paper**](https://github.com/m1ranthir/hunterpaper/issues/1) — m1ranthir, EN-US, 31 de julho de 2026.
 
-[Submeter o primeiro paper](https://github.com/m1ranthir/hunterpaper/issues/new?template=paper-submission.yml)
+[Submeter um paper](https://github.com/m1ranthir/hunterpaper/issues/new?template=paper-submission.yml)
 
 ## Contribuidores
 
@@ -51,6 +51,7 @@ Novos contribuidores de código serão exibidos na área de comunidade do site e
 5. O paper pode receber uma solicitação de alterações, ser recusado ou ser aprovado para publicação.
 
 O fluxo completo está documentado em [`docs/GITHUB_SUBMISSIONS.md`](docs/GITHUB_SUBMISSIONS.md).
+O passo a passo de publicação está no [`Manual para publicar um paper`](docs/PUBLICAR_PAPER.md).
 
 ## Rodar localmente
 

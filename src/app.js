@@ -173,8 +173,12 @@ function updateTopicButtons() {
 
 function renderHome() {
   const hasPapers = papers.length > 0;
+  const availableTopics = new Set(
+    papers.flatMap((paper) => [paper.category, ...paper.tags]),
+  );
   const filters = hasPapers
     ? topicOrder
+        .filter((topic) => topic === "all" || availableTopics.has(topic))
         .map(
           (topic) => `
             <button
