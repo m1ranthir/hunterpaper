@@ -25,4 +25,4 @@ Um paper deve incluir:
 - mitigação;
 - referências quando aplicável.
 
-Papers são escritos em Markdown. HTML arbitrário e MDX não serão aceitos. O processo de aprovação, alterações e recusa está documentado em [`docs/GITHUB_SUBMISSIONS.md`](docs/GITHUB_SUBMISSIONS.md).
+Papers são escritos em Markdown. HTML arbitrário e MDX não serão aceitos. Cada submissão passa por revisão manual e pode ser aprovada, devolvida para alterações ou recusada.

@@ -4,8 +4,6 @@
 
 Não abra uma issue pública com detalhes exploráveis. Antes do lançamento, o projeto ainda precisa configurar um canal privado de contato; até isso acontecer, preserve o relatório localmente e não envie segredos pelo protótipo.
 
-Consulte também o [guia de desenvolvimento seguro](docs/SECURE_DEVELOPMENT.md), que documenta o modelo de ameaças, as defesas aplicadas e os headers obrigatórios no deploy.
-
 ## Vulnerabilidades descritas em papers
 
 O Hunter Paper aceita somente conteúdo cuja divulgação foi autorizada. Antes de submeter:

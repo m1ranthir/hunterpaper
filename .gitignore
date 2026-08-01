@@ -2,9 +2,52 @@
 Thumbs.db
 node_modules/
 dist/
+coverage/
+.cache/
+.tmp/
+tmp/
 .agents/
 .codex/
+.idea/
+.vscode/
 .env
 .env.*
 !.env.example
 *.log
+
+# Local documentation: never publish this directory.
+/docs/
+
+# Only the assets already approved for the public site are versioned.
+/assets/*
+!/assets/favicon.svg
+!/assets/hp_logo.png
+!/assets/m1ranthir_logo.png
+
+# Private research material and unpublished drafts.
+/private/
+/secrets/
+/drafts/
+/evidence/
+/reports/
+/uploads/
+/papers/drafts/
+
+# Credentials, certificates and local data stores.
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+*.keystore
+*.sqlite
+*.sqlite3
+*.db
+*.dump
+*.bak
+
+# Raw captures may contain credentials, cookies or private target data.
+*.har
+*.pcap
+*.pcapng
+*.burp
