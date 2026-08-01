@@ -1,6 +1,6 @@
 import { config } from "./config.js";
 import { creator, getContributors, githubUrl, supporters } from "./community.js";
-import { papers, topicOrder } from "./data.js";
+import { papers, sortPapersForFeed, topicOrder } from "./data.js";
 import { canonicalPaperHash, resolvePaper } from "./routing.js";
 import { externalUrl } from "./security.js";
 import {
@@ -101,6 +101,7 @@ function paperRow(paper, index) {
       <span class="paper-index" aria-hidden="true">${formatIndex(index)}</span>
       <div>
         <div class="paper-meta">
+          ${paper.pinned ? `<span class="pinned-label">${escapeHtml(t("home.pinned"))}</span><span class="separator" aria-hidden="true"></span>` : ""}
           <span class="category">${escapeHtml(paper.category)}</span>
           <span class="separator" aria-hidden="true"></span>
           <time datetime="${escapeHtml(paper.publishedAt)}">${escapeHtml(paper.publishedAt ? formatDate(paper.publishedAt) : paper.publishedLabel || "")}</time>
@@ -121,7 +122,7 @@ function paperRow(paper, index) {
 function filteredPapers() {
   const normalizedQuery = state.query.trim().toLocaleLowerCase(getLocale());
 
-  return papers.filter((paper) => {
+  const matches = papers.filter((paper) => {
     const matchesTopic =
       state.topic === "all" ||
       paper.category === state.topic ||
@@ -131,6 +132,8 @@ function filteredPapers() {
       .toLocaleLowerCase(getLocale());
     return matchesTopic && (!normalizedQuery || haystack.includes(normalizedQuery));
   });
+
+  return sortPapersForFeed(matches);
 }
 
 function renderFeed() {

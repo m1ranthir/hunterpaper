@@ -37,6 +37,7 @@ export const messages = Object.freeze({
     "home.filterTag": "Filter by {tag}",
     "home.tagsLabel": "Tags",
     "home.readingTime": "{time} read",
+    "home.pinned": "Pinned",
 
     "paper.publishedOn": "published on",
     "paper.tocAria": "Paper table of contents",
@@ -154,6 +155,7 @@ export const messages = Object.freeze({
     "home.filterTag": "Filtrar por {tag}",
     "home.tagsLabel": "Tags",
     "home.readingTime": "{time} de leitura",
+    "home.pinned": "Fixado",
 
     "paper.publishedOn": "publicado em",
     "paper.tocAria": "Índice do paper",
