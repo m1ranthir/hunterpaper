@@ -9,6 +9,8 @@ export const papers = [
     category: "community",
     tags: ["community", "bug-bounty", "open-source"],
     publishedAt: "2026-07-31",
+    pinned: true,
+    pinOrder: 1,
     readMinutes: 2,
     difficulty: "beginner",
     author: "m1ranthir",
@@ -34,6 +36,33 @@ Use your brain, and let’s go break some poorly written code! =D
 By: Hunter Paper | m1ranthir`,
   }),
 ];
+
+function pinRank(paper) {
+  return Number.isInteger(paper.pinOrder) && paper.pinOrder > 0
+    ? paper.pinOrder
+    : Number.MAX_SAFE_INTEGER;
+}
+
+export function sortPapersForFeed(items) {
+  return [...items].sort((first, second) => {
+    const firstPinned = first.pinned === true;
+    const secondPinned = second.pinned === true;
+
+    if (firstPinned !== secondPinned) return firstPinned ? -1 : 1;
+
+    if (firstPinned && secondPinned) {
+      const rankDifference = pinRank(first) - pinRank(second);
+      if (rankDifference !== 0) return rankDifference;
+    }
+
+    const dateDifference = String(second.publishedAt).localeCompare(
+      String(first.publishedAt),
+    );
+    if (dateDifference !== 0) return dateDifference;
+
+    return String(first.id).localeCompare(String(second.id));
+  });
+}
 
 // Filtros preparados para quando houver conteúdo publicado.
 export const topicOrder = [

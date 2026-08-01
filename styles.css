@@ -610,6 +610,11 @@ button {
   color: var(--orange-soft);
 }
 
+.paper-meta .pinned-label {
+  color: var(--text-soft);
+  font-weight: 650;
+}
+
 .paper-meta .separator::before {
   color: var(--border-strong);
   content: "·";
