@@ -14,7 +14,7 @@ export const creator = Object.freeze({
   image: "./assets/m1ranthir_logo.png",
   socials: Object.freeze({
     github: "https://github.com/m1ranthir",
-    linkedin: "https://www.linkedin.com/in/kaikymoura/",
+    linkedin: "https://www.linkedin.com/in/kaikymoura/"
   }),
 });
 
